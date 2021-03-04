@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   const handleClick = (e) => {
-    e.preventDefault();
+    //e.preventDefault() is not required as it is not reloading the whole component in this case.
     dispatch(setInput(inputValue));
   };
 
@@ -39,6 +39,7 @@ const Navbar = () => {
             placeholder="Search for a blog"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={(e) => e.key === "Enter" && handleClick(e)}
           />
           <button className="submit" onClick={handleClick}>
             Search

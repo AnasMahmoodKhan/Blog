@@ -12,7 +12,6 @@ import "../styles/home.css";
 const Homepage = () => {
   const dispatch = useDispatch();
   const login = (res) => {
-    console.log(res);
     dispatch(setSignedIn(true));
     dispatch(setUserData(res.profileObj));
   };
@@ -20,7 +19,7 @@ const Homepage = () => {
 
   return (
     <div className="home_page" style={{ display: isSignedIn ? "none" : "" }}>
-      {!isSignedIn ? (
+      {!isSignedIn && (
         <div className="login_message">
           <h2>
             <FaBlog />
@@ -47,8 +46,6 @@ const Homepage = () => {
             cookiePolicy={"single_host_origin"}
           />
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
