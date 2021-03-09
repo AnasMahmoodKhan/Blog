@@ -36,7 +36,7 @@ const Blogs = () => {
       <h1 className="blog__page__header">Blogs</h1>
       {loading && <h1 className="loading">Loading...</h1>}
       {blogs ? (
-        <div className="blogs">
+        <div className="blogs" id="blogs">
           {blogs.articles
             ? blogs.articles.map(
                 ({ image, source, publishedAt, title, description, url }) => (
