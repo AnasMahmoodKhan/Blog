@@ -21,39 +21,45 @@ const Blogs = () => {
         setBlogs(response.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, [blog_url, dispatch]);
+
+  let noBlog = (
+    <h1 className="no__blogs">
+      No blogs available 😞. Search something else to read blogs on the greatest
+      platform.
+    </h1>
+  );
 
   return (
     <div className="blog__page">
       <h1 className="blog__page__header">Blogs</h1>
       {loading && <h1 className="loading">Loading...</h1>}
-      <div className="blogs">
-        {blogs?.articles?.map(
-          ({ image, source, publishedAt, title, description, url }) => (
-            <a className="blog" target="blank" href={url}>
-              <img src={image} alt="..." />
-              <div>
-                <h3 className="sourceName">
-                  <span>{source.name}</span>
-                  <p>{publishedAt}</p>
-                </h3>
-                <h1>{title}</h1>
-                <p>{description}</p>
-              </div>
-            </a>
-          )
-        )}
+      {blogs ? (
+        <div className="blogs">
+          {blogs.articles
+            ? blogs.articles.map(
+                ({ image, source, publishedAt, title, description, url }) => (
+                  <a className="blog" target="blank" href={url}>
+                    <img src={image} alt="..." />
+                    <div>
+                      <h3 className="sourceName">
+                        <span>{source.name}</span>
+                        <p>{publishedAt}</p>
+                      </h3>
+                      <h1>{title}</h1>
+                      <p>{description}</p>
+                    </div>
+                  </a>
+                )
+              )
+            : noBlog}
 
-        {blogs?.totalArticles === 0 && (
-          <h1 className="no__blogs">
-            No blogs available 😞. Search something else to read blogs on the
-            greatest platform.
-          </h1>
-        )}
-      </div>
+          {blogs.totalArticles === 0 && noBlog}
+        </div>
+      ) : (
+        noBlog
+      )}
     </div>
   );
 };

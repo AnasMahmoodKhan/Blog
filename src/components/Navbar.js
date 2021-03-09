@@ -25,7 +25,6 @@ const Navbar = () => {
   };
 
   const handleClick = (e) => {
-    //e.preventDefault() is not required as it is not reloading the whole component in this case.
     dispatch(setInput(inputValue));
   };
 
