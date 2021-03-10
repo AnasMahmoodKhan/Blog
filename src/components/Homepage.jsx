@@ -18,7 +18,7 @@ const Homepage = () => {
   const isSignedIn = useSelector(selectSignedIn);
 
   return (
-    <div className="home_page" style={{ display: isSignedIn ? "none" : "" }}>
+    <div className="home_page" id="home" style={{ display: isSignedIn ? "none" : "" }}>
       {!isSignedIn && (
         <div className="login_message">
           <h2>

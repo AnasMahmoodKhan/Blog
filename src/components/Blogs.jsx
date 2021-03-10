@@ -32,7 +32,7 @@ const Blogs = () => {
   );
 
   return (
-    <div className="blog__page">
+    <section className="blog__page">
       <h1 className="blog__page__header">Blogs</h1>
       {loading && <h1 className="loading">Loading...</h1>}
       {blogs ? (
@@ -60,7 +60,7 @@ const Blogs = () => {
       ) : (
         noBlog
       )}
-    </div>
+    </section>
   );
 };
 

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./app/store";
 import Blogs from "./components/Blogs";
 import Homepage from "./components/Homepage";
+import Navbar from "./components/Navbar";
 
 configure({ adapter: new Adapter() });
 
@@ -54,13 +55,13 @@ describe("Blogs Component", () => {
 
   it("Should render without errors", () => {
     const wrapper = component.find(".blog__page");
-    console.log(wrapper.length);
-    expect(wrapper.length).toBe(1);
+
+    expect(wrapper).toBeTruthy();
   });
 
   it("Should render blogs", () => {
     const blogs = component.find(".blogs");
-    expect(blogs.length).toBe(1);
+    expect(blogs).toBeTruthy();
   });
 });
 
@@ -73,8 +74,19 @@ describe("Homepage Component", () => {
 
   it("Should render without errors", () => {
     const wrapper = component.find(".home_page");
-    console.log(wrapper.length);
-    expect(wrapper.length).toBe(1);
+    expect(wrapper).toBeTruthy();
   });
-  
+});
+
+describe("Navbar Test", () => {
+  let component = shallow(
+    <Provider store={store}>
+      <Navbar />
+    </Provider>
+  );
+
+  it("Should render without errors", () => {
+    const wrapper = component.find(".navbar");
+    expect(wrapper).toBeTruthy();
+  });
 });
